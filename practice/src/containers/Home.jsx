@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
+import Todo from '../components/Todo';
 
 class Home extends Component {
     render() {
         return (
-            <h3>Hello it's Home.</h3>
+            <Todo title='First ToDo' />
         );
     }
 }
