@@ -16,6 +16,7 @@ class Todo extends Component {
     addItem(event) {
         event.preventDefault();
         this.setState({
+            value: '',
             items: this.state.items.concat([this.state.value])
         });
     }
@@ -32,8 +33,8 @@ class Todo extends Component {
                     <input type="text" value={this.state.value} onChange={this.handleChange} />
                     <div>
                         <ul>
-                            {this.state.items.map(item => (
-                                <li>{item}</li>
+                            {this.state.items.map((item, index) => (
+                                <li key={index}>{item}</li>
                             ))}
                         </ul>
                     </div>
