@@ -7,9 +7,12 @@ import Home from './containers/Home';
 import './App.css';
 
 const App = () => (
-  <Router>
-    <Route exact path="/" component={Home} />
-  </Router>
+  <div class="app">
+    <Router>
+      <Route exact path="/" component={Home} />
+    </Router>
+  </div>
+
 )
 
 export default App;
