@@ -1,0 +1,31 @@
+#nav {
+    width: 100%; 
+    font-size: 20px;
+    border-bottom: 1px solid #ccc;
+    position: fixed;
+    top: 0;
+}
+
+#nav ul {
+    list-style-type: none; 
+    margin: 0; 
+    padding: 0;
+    overflow: hidden;
+}
+
+#nav ul li {
+    float: left;
+}
+
+#nav li a {
+    text-decoration: none;
+    display: inline-table;
+    color: peru;
+    text-align: center;
+    padding: 5px;
+    width: 100%;
+}
+
+#nav li a:hover {
+    background: lightcyan;
+}

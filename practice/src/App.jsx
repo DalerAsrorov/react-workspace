@@ -4,15 +4,17 @@ import {
   Route
 } from 'react-router-dom';
 import Home from './containers/Home';
+import Nav from './components/Nav';
 import './App.css';
 
 const App = () => (
-  <div class="app">
-    <Router>
-      <Route exact path="/" component={Home} />
-    </Router>
-  </div>
+  <Router>
+    <div className="app">
+      <Nav />
 
-)
+      <Route exact path="/" component={Home} />
+    </div>
+  </Router>
+);
 
 export default App;
