@@ -11,6 +11,7 @@ class Todo extends Component {
 
         this.handleChange = this.handleChange.bind(this);
         this.addItem = this.addItem.bind(this);
+        this.removeItem = this.removeItem.bind(this);
     }
 
     addItem(event) {
@@ -18,6 +19,15 @@ class Todo extends Component {
         this.setState({
             value: '',
             items: this.state.items.concat([this.state.value])
+        });
+    }
+
+    removeItem(index) {
+        const itemsClone = this.state.items.slice();
+        itemsClone.splice(index, 1);
+
+        this.setState({
+            items: itemsClone
         });
     }
 
@@ -34,7 +44,10 @@ class Todo extends Component {
                     <div>
                         <ul>
                             {this.state.items.map((item, index) => (
-                                <li key={index}>{item}</li>
+                                <li key={index} >
+                                    <span> {item} </span>
+                                    <button type="button" onClick={() => this.removeItem(index)}>delete</button>
+                                </li>
                             ))}
                         </ul>
                     </div>
