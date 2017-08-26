@@ -23,13 +23,21 @@ export default class ScoreInfo extends PureComponent {
     static propTypes = {
         onClearBoard: PropTypes.func.isRequired,
         isTurn: PropTypes.bool.isRequired,
+        winner: PropTypes.oneOfType([PropTypes.object, PropTypes.bool]),
         option1: PropTypes.string.isRequired,
         option2: PropTypes.string.isRequired
     };
 
     render() {
-        const { onClearBoard, isTurn, option1, option2 } = this.props;
+        const { onClearBoard, isTurn, option1, option2, winner } = this.props;
         const currentPlayer = isTurn ? option1 : option2;
+        let theWinner;
+
+        if (winner) {
+            theWinner = `${option1} won.`;
+        } else if (winner === false) {
+            theWinner = `${option2} won.`;
+        }
 
         return (
             <ScoreInfoWrapper>
@@ -38,6 +46,11 @@ export default class ScoreInfo extends PureComponent {
                 </ScoreInfoChild>
                 <ScoreInfoChild>
                     <ReplayButton onClick={onClearBoard}>Replay</ReplayButton>
+                </ScoreInfoChild>
+                <ScoreInfoChild>
+                    <div>
+                        {theWinner}
+                    </div>
                 </ScoreInfoChild>
             </ScoreInfoWrapper>
         );
