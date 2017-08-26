@@ -1,9 +1,8 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-const About = () => (
+const About = () =>
     <div>
         <h3>About page</h3>
-    </div>
-);
+    </div>;
 
 export default About;
