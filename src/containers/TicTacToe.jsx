@@ -18,14 +18,18 @@ export default class TicTacToe extends Component {
     };
 
     _handleStepMade(index) {
-        this.setState(prevState => {
-            let { isTurn, board } = prevState;
-            board[index] = isTurn;
+        let { isTurn, board } = this.state;
 
-            return {
-                isTurn: !isTurn,
-                board
-            };
+        if (board[index]) {
+            return;
+        }
+
+        let newBoard = [...board];
+        newBoard[index] = isTurn;
+
+        this.setState({
+            isTurn: !isTurn,
+            board: newBoard
         });
     }
 
@@ -34,14 +38,7 @@ export default class TicTacToe extends Component {
 
         return (
             <TicTacToeWrapper>
-                <Grid
-                    board={board}
-                    onStepMade={this._handleStepMade.bind(this)}
-                    rows={3}
-                    columns={3}
-                    option1="X"
-                    option2="0"
-                />
+                <Grid board={board} onStepMade={this._handleStepMade.bind(this)} n={3} option1="X" option2="0" />
             </TicTacToeWrapper>
         );
     }

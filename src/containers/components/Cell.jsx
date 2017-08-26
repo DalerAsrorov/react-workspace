@@ -6,14 +6,18 @@ const CellWrapper = styled.div`
     display: table-cell;
     text-align: center;
     vertical-align: middle;
-    padding: 5px;
-    font-size: 22px;
+    padding: 3px;
     border: 1px solid #bbb;
     cursor: pointer;
 
     &:hover {
         background: #ddd;
     }
+`;
+
+const CellFormat = styled.h4`
+    margin: 0;
+    padding: 0;
 `;
 
 export default class Cell extends PureComponent {
@@ -38,7 +42,9 @@ export default class Cell extends PureComponent {
         const { index } = this.props;
         return (
             <CellWrapper key={index} onClick={this._handleStepMade.bind(this)}>
-                {value}
+                <CellFormat>
+                    {value}
+                </CellFormat>
             </CellWrapper>
         );
     }

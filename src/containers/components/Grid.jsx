@@ -3,6 +3,11 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Cell from './Cell';
 
+const GridRow = styled.div`
+    display: table-row;
+    width: 100%;
+`;
+
 const GridWrapper = styled.div`
     display: table;
     width: 100%;
@@ -10,15 +15,35 @@ const GridWrapper = styled.div`
 `;
 
 const Grid = props => {
-    const { board, onStepMade, rows, columns, option1, option2 } = props;
+    const { board, onStepMade, n, option1, option2 } = props;
+    let gridRowArray = [],
+        gridRowWrappers = [];
 
-    const cells = board.map((cellValue, index) =>
-        <Cell onStepMade={onStepMade} value={cellValue} index={index} option1={option1} option2={option2} />
-    );
+    board.forEach((cellValue, cellIndex) => {
+        gridRowArray.push(
+            <Cell
+                key={cellIndex}
+                onStepMade={onStepMade}
+                value={cellValue}
+                index={cellIndex}
+                option1={option1}
+                option2={option2}
+            />
+        );
+
+        if (gridRowArray.length === n) {
+            gridRowWrappers.push(
+                <GridRow key={`r${cellIndex}`}>
+                    {gridRowArray}
+                </GridRow>
+            );
+            gridRowArray = [];
+        }
+    });
 
     return (
         <GridWrapper>
-            {cells}
+            {gridRowWrappers}
         </GridWrapper>
     );
 };
@@ -26,8 +51,7 @@ const Grid = props => {
 Grid.propTypes = {
     board: PropTypes.array,
     onStepMade: PropTypes.func,
-    rows: PropTypes.number,
-    width: PropTypes.number,
+    n: PropTypes.number,
     option1: PropTypes.string,
     option2: PropTypes.string
 };
