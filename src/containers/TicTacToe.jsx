@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import Grid from './components/Grid';
+import ScoreInfo from './components/ScoreInfo';
 
 const TicTacToeWrapper = styled.div`
     width: 80%;
@@ -9,13 +10,17 @@ const TicTacToeWrapper = styled.div`
     margin-top: 15px;
 `;
 
-export default class TicTacToe extends Component {
-    state = {
-        board: [null, null, null, null, null, null, null, null, null],
+const DEFAULT_STATE = {
+    board: [null, null, null, null, null, null, null, null, null],
 
-        // x = true, 0 = false
-        isTurn: true
-    };
+    // x = true, 0 = false
+    isTurn: true
+};
+
+const [OPTION_1, OPTION_2] = ['X', '0'];
+
+export default class TicTacToe extends Component {
+    state = DEFAULT_STATE;
 
     _handleStepMade(index) {
         let { isTurn, board } = this.state;
@@ -33,12 +38,28 @@ export default class TicTacToe extends Component {
         });
     }
 
+    _handleClearBoard() {
+        this.setState(DEFAULT_STATE);
+    }
+
     render() {
-        const { board } = this.state;
+        const { board, isTurn } = this.state;
 
         return (
             <TicTacToeWrapper>
-                <Grid board={board} onStepMade={this._handleStepMade.bind(this)} n={3} option1="X" option2="0" />
+                <Grid
+                    board={board}
+                    onStepMade={this._handleStepMade.bind(this)}
+                    n={3}
+                    option1={OPTION_1}
+                    option2={OPTION_2}
+                />
+                <ScoreInfo
+                    onClearBoard={this._handleClearBoard.bind(this)}
+                    isTurn={isTurn}
+                    option1={OPTION_1}
+                    option2={OPTION_2}
+                />
             </TicTacToeWrapper>
         );
     }

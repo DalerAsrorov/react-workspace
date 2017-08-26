@@ -60,9 +60,9 @@ export default class Cell extends PureComponent {
         let cell = _generateCell();
 
         if (value) {
-            cell = _generateCell(option2);
-        } else if (value === false) {
             cell = _generateCell(option1);
+        } else if (value === false) {
+            cell = _generateCell(option2);
         }
 
         return cell;
