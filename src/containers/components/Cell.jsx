@@ -18,6 +18,10 @@ const CellWrapper = styled.div`
 const CellFormat = styled.h4`
     margin: 0;
     padding: 0;
+    width: 20px;
+    height: 30px;
+    margin: 0 auto;
+    font-size: 32px;
 `;
 
 export default class Cell extends PureComponent {

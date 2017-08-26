@@ -20,7 +20,7 @@ export default class TicTacToe extends Component {
     _handleStepMade(index) {
         let { isTurn, board } = this.state;
 
-        if (board[index]) {
+        if (board[index] !== null) {
             return;
         }
 
