@@ -9,6 +9,11 @@ const CellWrapper = styled.div`
     padding: 5px;
     font-size: 22px;
     border: 1px solid #bbb;
+    cursor: pointer;
+
+    &:hover {
+        background: #ddd;
+    }
 `;
 
 export default class Cell extends PureComponent {

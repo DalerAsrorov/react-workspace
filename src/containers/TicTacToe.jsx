@@ -4,7 +4,9 @@ import Grid from './components/Grid';
 
 const TicTacToeWrapper = styled.div`
     width: 80%;
-    height: 100vh;
+    height: 80vh;
+    margin: 0 auto;
+    margin-top: 15px;
 `;
 
 export default class TicTacToe extends Component {
